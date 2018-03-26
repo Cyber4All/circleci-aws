@@ -1,4 +1,4 @@
-FROM circleci/node:4-stretch
+FROM circleci/node:9.8-stretch-browsers
 
 MAINTAINER Gustavus Shaw II
 
