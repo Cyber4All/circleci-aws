@@ -1,8 +1,7 @@
-FROM circleci/node:9.8-stretch-browsers
+FROM docker:stable-git
 
-MAINTAINER Gustavus Shaw II
-
-RUN sudo apt-get update
-RUN sudo apt-get install python-pip python-dev jq
-RUN sudo pip install awscli
-RUN sudo pip install awsebcli
+RUN sudo apt-get update && sudo apt-get install python-pip python-dev jq \
+    sudo pip install awscli \
+    sudo curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest \
+    echo "$(curl -s https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-latest.md5) /usr/local/bin/ecs-cli" | md5sum -c - \
+    sudo chmod +x /usr/local/bin/ecs-cli
