@@ -1,4 +1,3 @@
-FROM node:8-alpine
 FROM docker:stable-git
 
 RUN apk --no-cache update && \
