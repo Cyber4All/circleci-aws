@@ -13,6 +13,7 @@ RUN apt-get update && \
     && apt-get clean
 
 RUN pip3 --no-cache-dir install --upgrade awscli
+RUN pip3 --no-cache-dir install --upgrade awsebcli
 
 RUN curl -o yq https://github.com/mikefarah/yq/releases/download/2.1.1/yq_linux_386 && \
     chmod +x ./yq
