@@ -1,23 +1,7 @@
-FROM node:8-slim
+FROM node:10.14.2
 
 RUN apt-get update && \
-    apt-get install -y \
-    python-pip \
-    python-dev \
-    build-essential \
-    groff \
-    less \
-    jq \
-    zip \
-    git \
-    && pip install --upgrade pip \
-    && pip install --upgrade virtualenv \ 
-    && apt-get clean
-
-RUN pip install --upgrade awscli \
-    awsebcli
-
-RUN curl -o yq https://github.com/mikefarah/yq/releases/download/2.1.1/yq_linux_386 && \
-    chmod +x ./yq
-
-ENV PATH /yq:$PATH
+    apt-get install -y python python-pip git python3-pip python3-setuptools ca-certificates groff jq less && \
+    pip3 --no-cache-dir install awscli && \
+    pip install awsebcli && \
+    rm -rf /var/cache/apt-get/*
